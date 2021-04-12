@@ -1,5 +1,5 @@
 import express from 'express';
-import {body, validationResult} from 'express-validator';
+import mongoose from 'mongoose';
 import { currentuserRouter } from './routes/currentuser';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
@@ -15,8 +15,12 @@ app.use(signupRouter);
 
 app.use(errorHandler);
 
-
+app.get('/',(req,res)=>{
+  return res.send(
+    "Testing"
+  )
+})
 
 app.listen(3000,()=>{
-  console.log("Listening on port 300!!")
+  console.log("Listening on port 3000!!")
 })

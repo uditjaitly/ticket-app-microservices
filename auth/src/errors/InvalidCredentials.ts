@@ -1,16 +1,10 @@
 import {ValidationError} from 'express-validator'
+import { CustomError } from './customer-error';
 
 
-interface InvalidCredentialsInterface{
-  statusCode:number,
-  serializeErrors():{
-    message:string;
-    field?:string;
-  }[]
-}
 
 
-class InvalidCredentials extends Error implements InvalidCredentialsInterface{
+class InvalidCredentials extends CustomError{
   statusCode=400;
   reason="Invalid Email or Password!"
   constructor(public errors:ValidationError[]){

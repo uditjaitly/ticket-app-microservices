@@ -1,9 +1,9 @@
 import {Request,Response,NextFunction} from 'express'
-import InvalidCredentials from '../errors/InvalidCredentials';
+import { CustomError } from '../errors/customer-error';
 
 
 const ErrorHandler=(err:Error, req:Request, res:Response, next:NextFunction)=>{
-  if(err instanceof InvalidCredentials){
+  if(err instanceof CustomError){
     return res.status(err.statusCode).send({errors:err.serializeErrors()})
   }
 }
